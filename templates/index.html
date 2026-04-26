@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VM Provisioning Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header class="page-header">
+            <div class="header-title">
+                <h1>VM Provisioning Portal</h1>
+                <p class="subtitle">Cloud Infrastructure Management</p>
+            </div>
+            <div class="header-user-info">
+                <p class="logged-in-text">Logged in as: <strong>{{ session.get('username') }}</strong></p>
+                <a href="{{ url_for('logout') }}" class="btn btn-danger btn-logout">Logout</a>
+            </div>
+        </header>
+
+        <main>
+            <section class="card">
+                <h2>Launch a New Instance</h2>
+                <form id="vm-launch-form" class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" pattern="[a-zA-Z0-9-]+" maxlength="50" placeholder="Instance Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="op-sys">Operating System:</label>
+                        <select id="op-sys" name="image" required>
+                        <option value="" disabled selected>-- Select an OS --</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="flavor">Flavor:</label>
+                    <select id="flavor" name="flavor" required>
+                        <option value="" disabled selected>-- Select a Flavor --</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="network">Network:</label>
+                    <select id="network" name="network" required>
+                        <option value="" disabled selected>-- Select a Network --</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Assigned Keypair:</label>
+                    <input type="text" id="assigned-key-display" disabled value="{{ assigned_key }}" class="input-disabled">
+                </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Launch VM</button>
+                    </div>
+                </form>
+                <div id="message"></div>
+            </section>
+
+            <section class="card mt-4">
+                <h2>Active Instances</h2>
+                <div class="table-responsive">
+                    <table id="instance-list" class="table">
+                        <thead>
+                            <tr>
+                                <th>VM Name</th>
+                                <th>Instance ID</th>
+                                <th>Status</th>
+                                <th>IP Address</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Instances will be populated here by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="card mt-4">
+                <h2>Audit Logs</h2>
+                <div class="table-responsive table-scrollable">
+                    <table id="logs-list" class="table">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>User</th>
+                                <th>Action</th>
+                                <th>Instance ID</th>
+                                <th>Result</th>
+                                <th>Parameters</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Logs will be populated here by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
