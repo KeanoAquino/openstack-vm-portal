@@ -61,8 +61,9 @@ Using VirtualBox:
 
 ```bash
 sudo apt update && sudo apt upgrade -y
-sudo apt install snapd -y
-sudo apt install python-openstackclient -y
+sudo apt install python3-openstackclient -y
+sudo apt install python3-pip -y
+pip install flask openstacksdk
 sudo apt install git -y
 sudo reboot
 ```
@@ -113,16 +114,7 @@ chmod 600 ssh_keys/*.pem
 
 ---
 
-### 7. Install Python Dependencies
-
-```bash
-sudo apt install python3-pip -y
-pip install flask openstacksdk
-```
-
----
-
-### 8. Project Setup
+### 7. Project Setup
 
 ```bash
 git clone https://github.com/KeanoAquino/openstack-vm-portal.git
@@ -146,7 +138,7 @@ openstack-vm-portal/
 
 ---
 
-### 9. Run the Application
+### 8. Run the Application
 Whenever the application is ran, these commands are necessary:
 ```bash
 source /var/snap/microstack/common/etc/microstack.rc
@@ -244,7 +236,7 @@ Logs are viewable directly in the web portal.
 
 ---
 
-## Future Improvements
+## Possible Future Improvements
 
 * Replace JSON logging with SQLite database
 * Add floating IP support
@@ -269,4 +261,3 @@ This project demonstrates a complete OpenStack-based VM provisioning workflow, i
 * Logging and user-level isolation
 
 It fulfills all core requirements for building a lightweight cloud management interface on top of OpenStack.
-
