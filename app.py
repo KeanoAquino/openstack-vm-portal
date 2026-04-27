@@ -246,7 +246,7 @@ def api_logs():
 def api_resources():
     try:
         resources = get_resources()
-        # Return assigned keypair instead of all keypairs
+        # Return assigned keypair
         return jsonify({
             "networks": resources["networks"],
             "images": resources["images"],
@@ -265,7 +265,7 @@ def api_resources():
 def api_launch():
     data = request.get_json()
 
-    # The keypair will now be determined on backend instead of passed from frontend
+    # The keypair is determined on backend
     required_fields = ["name", "image", "flavor", "network"]
     for field in required_fields:
         if not data.get(field):
