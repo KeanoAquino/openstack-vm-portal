@@ -228,7 +228,6 @@ Logs are viewable directly in the web portal.
 
 ## Limitations & Design Notes
 
-* Authentication is handled locally (not integrated with OpenStack Keystone)
 * Logs are stored in a JSON file instead of a database
 * Uses MicroStack single-node deployment (not production-grade multi-node OpenStack)
 * Nested virtualization may impact performance
