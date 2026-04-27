@@ -240,6 +240,7 @@ Logs are viewable directly in the web portal.
 
 * Replace JSON logging with SQLite database
 * Add floating IP support
+* Add support for more operating system images
 * Enable SSH access verification
 * Improve frontend with modern frameworks (e.g., React)
 
