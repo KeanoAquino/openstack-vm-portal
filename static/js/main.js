@@ -6,7 +6,7 @@ $(document).ready(function () {
     loadInstances();
     loadLogs();
 
-    // Auto-refresh the instances table every 3 seconds to show BUILD -> ACTIVE transitions and IPs
+    // Auto-refresh the instances table every 3 seconds
     setInterval(loadInstances, 3000);
 
     // Centralize standard AJAX error handling for expired sessions Unauth
@@ -31,7 +31,7 @@ $(document).ready(function () {
         const submitBtn = $("#vm-launch-form button[type='submit']");
         submitBtn.prop("disabled", true).addClass("btn-locked").text("Launching...");
         
-        // Optimistically add the instance to the UI immediately
+        // Add the instance to the UI immediately
         pendingInstances.push(formData.name);
         const optimisticRow = `
             <tr>
@@ -272,7 +272,7 @@ $(document).ready(function () {
         const vmName = $(this).data("name");
         const btn = $(this);
 
-        // Optimistic UI for immediate feedback
+        // UI designed for immediate feedback
         btn.prop("disabled", true).addClass("btn-locked");
         btn.closest("tr").find("span[class^='status-']").removeClass().addClass("status-build").text("DELETING");
 
