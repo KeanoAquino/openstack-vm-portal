@@ -231,7 +231,6 @@ Logs are viewable directly in the web portal.
 * Logs are stored in a JSON file instead of a database
 * Uses MicroStack single-node deployment (not production-grade multi-node OpenStack)
 * Nested virtualization may impact performance
-* SSH access to instances was not tested (IP assignment only verified)
 
 ---
 
@@ -240,7 +239,6 @@ Logs are viewable directly in the web portal.
 * Replace JSON logging with SQLite database
 * Add floating IP support
 * Add support for more operating system images
-* Enable SSH access verification
 * Improve frontend with modern frameworks (e.g., React)
 
 ---
